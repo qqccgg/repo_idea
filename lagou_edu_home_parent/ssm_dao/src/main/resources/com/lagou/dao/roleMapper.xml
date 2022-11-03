@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lagou.dao.roleMapper">
+    <select id="findAllRole" parameterType="String" resultType="com.lagou.domain.Role">
+        select * from roles
+        /*There is no getter for property named ‘type ’ in ‘class java.lang.String’
+        因为MyBatis要求如果参数为String的话，不管接口方法的形参是什么，在Mapper.xml中引用时需要改变为_parameter才能识别*
+        或者在接口参数里加上mybatis中的@param注解/
+        <where>
+            <if test="_parameter!= null and _parameter!= ''">
+                and name like concat('%',#{name},'%')
+            </if>
+        </where>
+    </select>
+
+    <insert id="saveRole" parameterType="com.lagou.domain.Role">
+
+    </insert>
+    <update id="UpdateRole" parameterType="com.lagou.domain.Role">
+        update roles set name=#{name},code=#{code},description=#{description},updated_time=#{updatedTime} where
+        id=#{id}
+    </update>
+</mapper>
